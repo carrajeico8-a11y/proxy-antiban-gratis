@@ -1,0 +1,24 @@
+name: 🛡️ Proxy Anti-Ban Gratis
+run-name: Generando IP Limpia...
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch
+
+jobs:
+  construir:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: ⚙️ Instalando Proxy
+        run: |
+          apt update -y
+          apt install wget curl -y
+          wget -q https://raw.githubusercontent.com/serjs/socks5-server/master/install.sh
+          chmod +x install.sh
+          ./install.sh -u ADM -p JEICO777 -P 8888 --anti-detect --no-logs
+
+      - name: 🌐 Obtener IP LIMPIA
+        run: curl -s ifconfig.me
