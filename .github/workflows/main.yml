@@ -1,0 +1,22 @@
+name: 🛡️ Proxy Anti-Ban GRATIS
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch
+
+jobs:
+  proxy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: ⚙️ Instalando Servidor
+        run: |
+          apt update -y
+          apt install wget curl -y
+          wget -q https://raw.githubusercontent.com/serjs/socks5-server/master/install.sh
+          chmod +x install.sh
+          ./install.sh -u ADM -p JEICO777 -P 8888 --anti-detect --no-logs
+
+      - name: 🌐 TU IP LIMPIA ES:
+        run: curl -s ifconfig.me
