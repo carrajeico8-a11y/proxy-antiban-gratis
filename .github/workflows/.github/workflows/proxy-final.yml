@@ -1,0 +1,17 @@
+name: 🛡️ Proxy AntiBan 100%
+on:
+  workflow_dispatch
+
+jobs:
+  arrancar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⚙️ Instalar y Activar
+        run: |
+          sudo apt update -y
+          sudo apt install -y wget curl
+          wget -q https://raw.githubusercontent.com/serjs/socks5-server/master/install.sh
+          chmod +x install.sh
+          sudo ./install.sh -u ADM -p JEICO777 -P 8888 --anti-detect
+          echo "✅ TU IP ES:"
+          curl ifconfig.me
