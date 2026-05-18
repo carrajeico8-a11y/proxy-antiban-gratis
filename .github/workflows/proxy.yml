@@ -1,0 +1,19 @@
+name: 🛡️ Proxy AntiBan
+on:
+  workflow_dispatch
+
+jobs:
+  arrancar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Instalar Proxy
+        run: |
+          apt update -y
+          apt install wget curl -y
+          wget -q https://raw.githubusercontent.com/serjs/socks5-server/master/install.sh
+          chmod +x install.sh
+          ./install.sh -u ADM -p JEICO777 -P 8888 --anti-detect
+          echo "✅ TU IP LIMPIA:"
+          curl ifconfig.me
